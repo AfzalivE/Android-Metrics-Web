@@ -30,9 +30,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Change Dir
-        run: |
-          cd app
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
@@ -44,6 +41,8 @@ jobs:
         run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v3
+        with: 
+          generator_config_file: "app/vite.config.js"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
